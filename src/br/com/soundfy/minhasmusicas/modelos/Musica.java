@@ -1,8 +1,7 @@
 package br.com.soundfy.minhasmusicas.modelos;
 
-import br.com.soundfy.minhasmusicas.avaliacao.Recomendavel;
 
-public class Musica extends Audio implements Recomendavel {
+public class Musica extends Audio {
     private String album;
     private String artista;
     private String genero;
@@ -31,8 +30,13 @@ public class Musica extends Audio implements Recomendavel {
         this.genero = genero;
     }
 
+    //atributo classificação (estendido da superclasse Audio) é usado para aplicar a lógica de avaliação da música
     @Override
-    public int getRecomendacao() {
-        return 0;
+    public int getClassificacao() {
+        if (this.getTotalReproducoes() > 2000) {
+            return 10;
+        } else {
+            return 7;
+        }
     }
 }

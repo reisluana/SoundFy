@@ -1,8 +1,7 @@
 package br.com.soundfy.minhasmusicas.modelos;
 
-import br.com.soundfy.minhasmusicas.avaliacao.Recomendavel;
 
-public class Podcast extends Audio implements Recomendavel {
+public class Podcast extends Audio {
     private String host;
     private String descricao;
 
@@ -22,8 +21,13 @@ public class Podcast extends Audio implements Recomendavel {
         this.descricao = descricao;
     }
 
+    //atributo classificação (estendido da superclasse Audio) é usado para aplicar a lógica de avaliação do podcast
     @Override
-    public int getRecomendacao() {
-        return 0;
+    public int getClassificacao(){
+        if (this.getTotalCurtidas() > 500) {
+            return 10;
+        } else {
+            return 8;
+        }
     }
 }

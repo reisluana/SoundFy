@@ -2,6 +2,7 @@ package br.com.soundfy.minhasmusicas.principal;
 
 import br.com.soundfy.minhasmusicas.modelos.Musica;
 import br.com.soundfy.minhasmusicas.modelos.Podcast;
+import br.com.soundfy.minhasmusicas.modelos.Recomendados;
 
 public class Principal {
     public static void main(String[] args) {
@@ -22,6 +23,8 @@ public class Principal {
             musica.curte();
         }
 
+        /*
+
         //simulador de classificação da música
 
         if (musica.getTotalCurtidas() <= 39){
@@ -32,12 +35,16 @@ public class Principal {
             System.out.println("Música avaliada em 5 estrelas");
         }
 
+         */
+
         String fichaMusica = """
+                ******************************
                 Música: %s
                 Álbum: %s
                 Artista: %s
-                Gênero: %s""".formatted(musica.getTitulo(),musica.getAlbum(), musica.getArtista(),musica.getGenero());
-
+                Gênero: %s
+                ******************************""".formatted(musica.getTitulo(),musica.getAlbum(), musica.getArtista(),
+                musica.getGenero());
         System.out.println(fichaMusica);
 
         Podcast podcast = new Podcast();
@@ -56,6 +63,8 @@ public class Principal {
             podcast.curte();
         }
 
+        /*
+
         //simulador de classificação do podcast
 
         if (podcast.getTotalCurtidas() <= 399){
@@ -65,5 +74,21 @@ public class Principal {
         } else if (podcast.getTotalCurtidas() >= 500){
             System.out.println("Podcast avaliado em 5 estrelas");
         }
+
+         */
+
+        String fichaPodcast = """
+                ******************************
+                Título: %s
+                Host: %s
+                Descrição: %s
+                ******************************""".formatted(podcast.getTitulo(),podcast.getHost(),podcast.getDescricao());
+        System.out.println(fichaPodcast);
+
+        Recomendados recomendados = new Recomendados();
+        //para chamar o podcast ou musica e aplicar a lógica do método da classe Recomendados:
+        recomendados.inclui(podcast);
+        recomendados.inclui(musica);
+
     }
 }
